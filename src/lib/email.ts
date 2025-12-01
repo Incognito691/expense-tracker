@@ -1,6 +1,10 @@
 // Email service for sending OTP via backend API
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+// Use relative path for production (works with Vercel serverless functions)
+// Falls back to localhost for local development
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  (import.meta.env.DEV ? 'http://localhost:3001' : '');
 
 export const sendOTP = async (email: string, otp: string, name: string) => {
   try {

@@ -26,6 +26,7 @@ export default async function handler(req, res) {
 
   try {
     // Check if API key exists
+    // eslint-disable-next-line no-undef
     if (!process.env.RESEND_API_KEY) {
       return res.status(500).json({ message: 'RESEND_API_KEY not configured' });
     }
@@ -41,8 +42,9 @@ export default async function handler(req, res) {
 
     const { error } = await resend.emails.send({
       from: 'Expense Tracker <onboarding@resend.dev>',
-      to: [email],
-      subject: 'Your OTP Code - Expense Tracker',
+      to: ['sahilniraula00@gmail.com'],
+      reply_to: email,
+      subject: `OTP Code for ${email} - Expense Tracker`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -64,7 +66,7 @@ export default async function handler(req, res) {
               <div class="shield">🛡️</div>
               <div class="header">
                 <h1>Welcome ${name}!</h1>
-                <p>Your verification code is ready</p>
+                <p>OTP Request for: <strong>${email}</strong></p>
               </div>
               <div class="otp-code">${otp}</div>
               <p class="info">This code will expire in 10 minutes.</p>
@@ -79,17 +81,17 @@ export default async function handler(req, res) {
     });
 
     if (error) {
-      return res.status(500).json({ 
+      return res.status(500).json({
         message: 'Failed to send email',
-        error: error.message || 'Unknown error'
+        error: error.message || 'Unknown error',
       });
     }
 
     res.status(200).json({ success: true, message: 'OTP sent successfully' });
   } catch (error) {
-    res.status(500).json({ 
+    res.status(500).json({
       message: 'Failed to send OTP email',
-      error: error.message || 'Unknown error'
+      error: error.message || 'Unknown error',
     });
   }
 }

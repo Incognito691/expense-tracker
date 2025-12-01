@@ -23,22 +23,17 @@ export default async function handler(req, res) {
 
   // Only allow POST requests
   if (req.method !== 'POST') {
-    return res
-      .status(405)
-      .json({ success: false, message: 'Method not allowed' });
+    return res.status(405).json({ message: 'Method not allowed' });
   }
 
   try {
     const { email, otp, name } = req.body;
 
     if (!email || !otp || !name) {
-      return res.status(400).json({
-        success: false,
-        message: 'Missing required fields',
-      });
+      return res.status(400).json({ message: 'Missing required fields' });
     }
 
-    const { data, error } = await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: 'Expense Tracker <onboarding@resend.dev>',
       to: [email],
       subject: 'Your OTP Code - Expense Tracker',
@@ -78,23 +73,11 @@ export default async function handler(req, res) {
     });
 
     if (error) {
-      console.error('Resend error:', error);
-      return res.status(500).json({
-        success: false,
-        message: 'Failed to send email',
-      });
+      return res.status(500).json({ message: 'Failed to send email' });
     }
 
-    res.status(200).json({
-      success: true,
-      message: 'OTP sent successfully',
-      data,
-    });
+    res.status(200).json({ success: true, message: 'OTP sent successfully' });
   } catch (error) {
-    console.error('Server error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Internal server error',
-    });
+    res.status(500).json({ message: 'Failed to send OTP email' });
   }
 }

@@ -19,14 +19,11 @@ export const sendOTP = async (email: string, otp: string, name: string) => {
     const data = await response.json();
 
     if (!response.ok) {
-      console.error('Failed to send OTP:', data);
       return { success: false, message: data.message || 'Failed to send OTP' };
     }
 
-    console.log('✅ OTP sent successfully');
     return { success: true, message: 'OTP sent successfully' };
   } catch (error) {
-    console.error('Error sending OTP:', error);
     return {
       success: false,
       message: 'Failed to send OTP. Please check your connection.',

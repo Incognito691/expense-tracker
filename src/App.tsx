@@ -8,14 +8,15 @@ import { AuthProvider } from '@/context/AuthContext';
 import { ThemeProvider } from '@/components/theme-provider';
 import AppLayout from '@/components/layout/AppLayout';
 import ProtectedRoute from '@/components/auth/ProtectedRoute';
-import Dashboard from '@/pages/Dashboard';
-import Expenses from '@/pages/Expenses';
-import Savings from '@/pages/Savings';
+import Dashboard from '@/pages/DashboardNew';
+import Expenses from './pages/ExpensesNew';
+import Savings from './pages/SavingsNew';
+import Profile from '@/pages/ProfileNew';
 import Login from '@/pages/Login';
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
       <AuthProvider>
         <Router>
           <Routes>
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/expenses" element={<Expenses />} />
                 <Route path="/savings" element={<Savings />} />
+                <Route path="/profile" element={<Profile />} />
               </Route>
             </Route>
 

@@ -1,8 +1,6 @@
 import { Resend } from 'resend';
 
 export default async function handler(req, res) {
-  // eslint-disable-next-line no-undef
-  const resend = new Resend(process.env.RESEND_API_KEY);
   // Enable CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -27,11 +25,19 @@ export default async function handler(req, res) {
   }
 
   try {
+    // Check if API key exists
+    if (!process.env.RESEND_API_KEY) {
+      return res.status(500).json({ message: 'RESEND_API_KEY not configured' });
+    }
+
     const { email, otp, name } = req.body;
 
     if (!email || !otp || !name) {
       return res.status(400).json({ message: 'Missing required fields' });
     }
+
+    // eslint-disable-next-line no-undef
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     const { error } = await resend.emails.send({
       from: 'Expense Tracker <onboarding@resend.dev>',
@@ -73,11 +79,17 @@ export default async function handler(req, res) {
     });
 
     if (error) {
-      return res.status(500).json({ message: 'Failed to send email' });
+      return res.status(500).json({ 
+        message: 'Failed to send email',
+        error: error.message || 'Unknown error'
+      });
     }
 
     res.status(200).json({ success: true, message: 'OTP sent successfully' });
   } catch (error) {
-    res.status(500).json({ message: 'Failed to send OTP email' });
+    res.status(500).json({ 
+      message: 'Failed to send OTP email',
+      error: error.message || 'Unknown error'
+    });
   }
 }

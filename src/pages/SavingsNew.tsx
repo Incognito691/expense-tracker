@@ -131,7 +131,7 @@ export default function Savings() {
               <div className="flex justify-between text-sm font-medium">
                 <span className="text-muted-foreground">Current Amount</span>
                 <span className="text-purple-600 dark:text-purple-400 text-lg font-bold">
-                  $
+                  NPR
                   {savingsGoal.currentAmount.toLocaleString('en-US', {
                     minimumFractionDigits: 2,
                   })}
@@ -140,7 +140,7 @@ export default function Savings() {
               <div className="flex justify-between text-sm font-medium">
                 <span className="text-muted-foreground">Target Amount</span>
                 <span className="text-lg font-bold">
-                  $
+                  NPR
                   {savingsGoal.targetAmount.toLocaleString('en-US', {
                     minimumFractionDigits: 2,
                   })}
@@ -151,7 +151,7 @@ export default function Savings() {
               <div className="flex justify-between text-xs text-muted-foreground">
                 <span>{progress.toFixed(1)}% Complete</span>
                 <span>
-                  $
+                  NPR
                   {(
                     savingsGoal.targetAmount - savingsGoal.currentAmount
                   ).toLocaleString('en-US', { minimumFractionDigits: 2 })}{' '}

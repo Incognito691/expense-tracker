@@ -145,7 +145,7 @@ export default function Dashboard() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400">
-              $
+              NPR
               {monthlyIncome.toLocaleString('en-US', {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2,
@@ -169,7 +169,7 @@ export default function Dashboard() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl sm:text-3xl font-bold text-red-600 dark:text-red-400">
-              $
+              NPR
               {totalExpenses.toLocaleString('en-US', {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2,
@@ -195,7 +195,7 @@ export default function Dashboard() {
             <div
               className={`text-2xl sm:text-3xl font-bold ${balance >= 0 ? 'text-blue-600 dark:text-blue-400' : 'text-red-600 dark:text-red-400'}`}
             >
-              $
+              NPR
               {Math.abs(balance).toLocaleString('en-US', {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2,
@@ -218,7 +218,7 @@ export default function Dashboard() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl sm:text-3xl font-bold text-purple-600 dark:text-purple-400">
-              $
+              NPR
               {savingsGoal.currentAmount.toLocaleString('en-US', {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2,
@@ -251,13 +251,19 @@ export default function Dashboard() {
                     axisLine={false}
                   />
                   <YAxis
-                    fontSize={12}
+                    fontSize={10}
                     tickLine={false}
                     axisLine={false}
-                    tickFormatter={value => `NPR ${value}`}
+                    tickFormatter={value => `${value}`}
+                    label={{
+                      value: 'NPR',
+                      angle: -90,
+                      position: 'insideLeft',
+                      style: { fontSize: 10, fill: '#888' },
+                    }}
                   />
                   <Tooltip
-                    formatter={(value: number) => `$${value.toFixed(2)}`}
+                    formatter={(value: number) => `NPR ${value.toFixed(2)}`}
                     cursor={{ fill: 'rgba(59, 130, 246, 0.1)' }}
                   />
                   <Bar

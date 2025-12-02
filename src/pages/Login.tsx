@@ -34,16 +34,15 @@ export default function Login() {
     }
 
     const user = getUser(email);
-    if (user && user.name !== name) {
-      setError('Incorrect name for this email.');
+    if (user) {
+      setTimeout(() => {
+        login(email, user.name);
+        navigate('/');
+      }, 1200);
+    } else {
+      setError('User data not found.');
       setIsLoading(false);
-      return;
     }
-
-    setTimeout(() => {
-      login(email, name);
-      navigate('/');
-    }, 1200);
   };
 
   const handleSignup = async (e: React.FormEvent) => {
@@ -380,28 +379,6 @@ export default function Login() {
                       placeholder="john@example.com"
                       value={email}
                       onChange={e => setEmail(e.target.value)}
-                      required
-                      disabled={isLoading}
-                      className="pl-10 h-12 bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-200"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <Label
-                    htmlFor="login-name"
-                    className="text-sm font-medium text-gray-700"
-                  >
-                    Name
-                  </Label>
-                  <div className="mt-1.5 relative">
-                    <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
-                    <Input
-                      id="login-name"
-                      type="text"
-                      placeholder="John Doe"
-                      value={name}
-                      onChange={e => setName(e.target.value)}
                       required
                       disabled={isLoading}
                       className="pl-10 h-12 bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-200"

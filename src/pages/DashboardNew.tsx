@@ -145,7 +145,7 @@ export default function Dashboard() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400">
-              NPR
+              NPR{' '}
               {monthlyIncome.toLocaleString('en-US', {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2,
@@ -169,7 +169,7 @@ export default function Dashboard() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl sm:text-3xl font-bold text-red-600 dark:text-red-400">
-              NPR
+              NPR{' '}
               {totalExpenses.toLocaleString('en-US', {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2,
@@ -195,7 +195,7 @@ export default function Dashboard() {
             <div
               className={`text-2xl sm:text-3xl font-bold ${balance >= 0 ? 'text-blue-600 dark:text-blue-400' : 'text-red-600 dark:text-red-400'}`}
             >
-              NPR
+              NPR{' '}
               {Math.abs(balance).toLocaleString('en-US', {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2,
@@ -218,7 +218,7 @@ export default function Dashboard() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl sm:text-3xl font-bold text-purple-600 dark:text-purple-400">
-              NPR
+              NPR{' '}
               {savingsGoal.currentAmount.toLocaleString('en-US', {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2,

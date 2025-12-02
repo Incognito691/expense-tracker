@@ -143,7 +143,7 @@ export default function AddIncomeDialog({
             </div>
             <div className="grid gap-2">
               <Label htmlFor="amount" className="text-sm font-medium">
-                Amount ($)
+                Amount (NPR)
               </Label>
               <Input
                 id="amount"

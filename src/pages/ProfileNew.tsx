@@ -280,7 +280,7 @@ export default function Profile() {
                 })}
               </p>
               <p className="text-xs text-muted-foreground mt-1">
-                ${savingsGoal.currentAmount.toFixed(2)} saved
+                NPR {savingsGoal.currentAmount.toFixed(2)} saved
               </p>
             </div>
 

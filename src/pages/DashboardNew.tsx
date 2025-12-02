@@ -225,7 +225,7 @@ export default function Dashboard() {
               })}
             </div>
             <p className="text-xs text-muted-foreground mt-1">
-              Goal: ${savingsGoal.targetAmount.toFixed(2)}
+              Goal: NPR {savingsGoal.targetAmount.toFixed(2)}
             </p>
           </CardContent>
         </Card>
@@ -254,7 +254,7 @@ export default function Dashboard() {
                     fontSize={12}
                     tickLine={false}
                     axisLine={false}
-                    tickFormatter={value => `$${value}`}
+                    tickFormatter={value => `NPR ${value}`}
                   />
                   <Tooltip
                     formatter={(value: number) => `$${value.toFixed(2)}`}
@@ -319,7 +319,7 @@ export default function Dashboard() {
                     ))}
                   </Pie>
                   <Tooltip
-                    formatter={(value: number) => `$${value.toFixed(2)}`}
+                    formatter={(value: number) => `NPR ${value.toFixed(2)}`}
                   />
                   <Legend />
                 </PieChart>
@@ -369,7 +369,7 @@ export default function Dashboard() {
                     <div className="flex items-center gap-3">
                       <div className="text-right">
                         <p className="font-semibold text-red-600 dark:text-red-400">
-                          -${expense.amount.toFixed(2)}
+                          -NPR {expense.amount.toFixed(2)}
                         </p>
                       </div>
                       <Button
@@ -426,7 +426,7 @@ export default function Dashboard() {
                   <div className="flex items-center gap-3">
                     <div className="text-right">
                       <p className="font-semibold text-green-600 dark:text-green-400">
-                        +${income.amount.toFixed(2)}
+                        +NPR {income.amount.toFixed(2)}
                       </p>
                     </div>
                     <Button

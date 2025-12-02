@@ -176,7 +176,7 @@ export default function Savings() {
                   </DialogHeader>
                   <form onSubmit={handleSetGoal} className="space-y-4">
                     <div className="space-y-2">
-                      <Label htmlFor="goal">Target Amount ($)</Label>
+                      <Label htmlFor="goal">Target Amount (NPR)</Label>
                       <Input
                         id="goal"
                         type="number"
@@ -222,7 +222,7 @@ export default function Savings() {
                   </DialogHeader>
                   <form onSubmit={handleContribute} className="space-y-4">
                     <div className="space-y-2">
-                      <Label htmlFor="contribution">Amount ($)</Label>
+                      <Label htmlFor="contribution">Amount (NPR)</Label>
                       <Input
                         id="contribution"
                         type="number"
@@ -365,7 +365,7 @@ export default function Savings() {
                   <PiggyBank className="h-5 w-5 text-green-600 dark:text-green-400 mx-auto mb-1" />
                   <p className="text-xs text-muted-foreground">Total Saved</p>
                   <p className="text-sm font-bold text-green-700 dark:text-green-400">
-                    ${savingsGoal.currentAmount.toFixed(2)}
+                    NPR {savingsGoal.currentAmount.toFixed(2)}
                   </p>
                 </div>
                 <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-center">
@@ -439,7 +439,7 @@ export default function Savings() {
                     </div>
                     <div className="flex items-center gap-4">
                       <span className="font-bold text-lg text-green-600 dark:text-green-400">
-                        +${contribution.amount.toFixed(2)}
+                        +NPR {contribution.amount.toFixed(2)}
                       </span>
                       <Button
                         variant="ghost"
@@ -503,13 +503,14 @@ export default function Savings() {
             </DialogTitle>
             <DialogDescription>
               Are you sure you want to delete ALL {savingsContributions.length}{' '}
-              savings contributions? This will reset your total savings to $0.00
-              and cannot be undone.
+              savings contributions? This will reset your total savings to NPR
+              0.00 and cannot be undone.
             </DialogDescription>
           </DialogHeader>
           <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
             <p className="text-sm font-semibold text-red-900 dark:text-red-100">
-              You will lose ${savingsGoal.currentAmount.toFixed(2)} in savings
+              You will lose NPR {savingsGoal.currentAmount.toFixed(2)} in
+              savings
             </p>
           </div>
           <DialogFooter className="gap-2 sm:gap-0">

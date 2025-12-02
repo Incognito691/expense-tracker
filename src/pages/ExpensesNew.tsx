@@ -289,7 +289,7 @@ export default function Expenses() {
                     </div>
                     <div className="flex items-center gap-4">
                       <span className="font-bold text-lg text-red-600 dark:text-red-400">
-                        -${expense.amount.toFixed(2)}
+                        -NPR {expense.amount.toFixed(2)}
                       </span>
                       <Button
                         variant="ghost"
